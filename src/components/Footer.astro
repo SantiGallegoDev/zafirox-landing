@@ -1,0 +1,66 @@
+---
+const links = [
+  { label: 'Funcionalidades', href: '#funcionalidades' },
+  { label: 'Cómo Funciona', href: '#como-funciona' },
+  { label: 'Precios', href: '#precios' },
+  { label: 'Preguntas', href: '#faq' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<footer class="border-t border-gray-700 bg-carbon">
+  <div class="max-w-7xl mx-auto px-5 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Brand -->
+      <div>
+        <span class="text-xl font-black tracking-[0.25em] text-gold">ZAFIROX</span>
+        <p class="mt-3 text-gray-300 text-sm leading-relaxed">
+          Organiza tu estudio.<br />Eleva tu nivel.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 class="text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">Navegación</h4>
+        <ul class="flex flex-col gap-3">
+          {links.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-300 text-sm hover:text-gold transition-colors duration-300">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-[0.7rem] font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">Contacto</h4>
+        <ul class="flex flex-col gap-3 text-sm text-gray-300">
+          <li>Armenia, Quindío, Colombia</li>
+          <li>
+            <a href="https://wa.me/573000000000?text=Hola%2C+quiero+información+sobre+Zafirox" class="hover:text-gold transition-colors">
+              WhatsApp: +57 300 000 0000
+            </a>
+          </li>
+          <li>
+            <a href="mailto:hola@zafirox.com" class="hover:text-gold transition-colors">
+              hola@zafirox.com
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-[0.75rem] text-gray-400 tracking-wider">
+        &copy; 2026 Zafirox. Todos los derechos reservados.
+      </p>
+      <div class="flex gap-6 text-[0.75rem] text-gray-400">
+        <a href="#" class="hover:text-gold transition-colors">Política de privacidad</a>
+        <a href="#" class="hover:text-gold transition-colors">Términos de uso</a>
+      </div>
+    </div>
+  </div>
+</footer>

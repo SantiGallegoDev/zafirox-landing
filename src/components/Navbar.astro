@@ -1,0 +1,105 @@
+---
+const BASE = import.meta.env.BASE_URL;
+const links = [
+  { label: 'Funcionalidades', href: '#funcionalidades' },
+  { label: 'Cómo Funciona', href: '#como-funciona' },
+  { label: 'Precios', href: '#precios' },
+  { label: 'Preguntas', href: '#faq' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between h-16 lg:h-18">
+    <!-- Logo -->
+    <a href={BASE} class="text-bone font-black tracking-[0.25em] text-base lg:text-lg">ZAFIROX</a>
+
+    <!-- Desktop Links -->
+    <ul class="hidden lg:flex items-center gap-8">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="text-gray-300 text-[0.75rem] font-medium tracking-[0.15em] uppercase hover:text-gold transition-colors duration-300"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href="#contacto"
+          class="ml-2 px-5 py-2.5 bg-gold text-carbon text-[0.75rem] font-bold tracking-wider uppercase rounded-lg hover:bg-[#d4b76a] hover:shadow-[0_4px_20px_rgba(198,168,94,0.3)] transition-all duration-300"
+        >
+          Empezar ahora
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile Toggle -->
+    <button id="nav-toggle" class="lg:hidden p-2 flex flex-col gap-[5px]" aria-label="Abrir menú">
+      <span class="block w-[22px] h-[2px] bg-bone transition-all duration-300" id="bar1"></span>
+      <span class="block w-[22px] h-[2px] bg-bone transition-all duration-300" id="bar2"></span>
+      <span class="block w-[22px] h-[2px] bg-bone transition-all duration-300" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden border-t border-gray-700 bg-carbon/98 backdrop-blur-xl">
+    <div class="px-5 py-6 flex flex-col gap-4">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="mobile-link text-gray-300 text-sm font-medium tracking-wider uppercase hover:text-gold transition-colors py-2"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contacto"
+        class="mobile-link mt-2 px-5 py-3 bg-gold text-carbon text-sm font-bold tracking-wider uppercase rounded-lg text-center hover:bg-[#d4b76a] transition-all"
+      >
+        Empezar ahora
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar')!;
+  const toggle = document.getElementById('nav-toggle')!;
+  const menu = document.getElementById('mobile-menu')!;
+  const bar1 = document.getElementById('bar1')!;
+  const bar2 = document.getElementById('bar2')!;
+  const bar3 = document.getElementById('bar3')!;
+
+  let isOpen = false;
+
+  // Scroll effect
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('bg-carbon/90', 'backdrop-blur-xl', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]', 'border-b', 'border-gold/8');
+    } else {
+      navbar.classList.remove('bg-carbon/90', 'backdrop-blur-xl', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]', 'border-b', 'border-gold/8');
+    }
+  });
+
+  // Mobile toggle
+  toggle.addEventListener('click', () => {
+    isOpen = !isOpen;
+    menu.classList.toggle('hidden');
+    bar1.style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
+    bar2.style.opacity = isOpen ? '0' : '1';
+    bar3.style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
+  });
+
+  // Close on link click
+  menu.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      menu.classList.add('hidden');
+      bar1.style.transform = '';
+      bar2.style.opacity = '1';
+      bar3.style.transform = '';
+    });
+  });
+</script>

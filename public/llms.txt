@@ -1,0 +1,28 @@
+# Zafirox
+
+> Zafirox es una plataforma SaaS de agendamiento online diseñada específicamente para barberías en Colombia. Permite a los dueños de barberías gestionar citas, barberos, servicios y clientes desde una sola plataforma, con notificaciones automáticas por WhatsApp.
+
+## Información Principal
+
+- [Página principal](https://santigallegodev.github.io/zafirox-landing/): Landing page con funcionalidades, precios y preguntas frecuentes.
+
+## Funcionalidades
+
+- Agenda online inteligente con cálculo automático de disponibilidad
+- Gestión de barberos con horarios individuales y fotos
+- Servicios y combos con precios y duraciones automáticas
+- Notificaciones automáticas por WhatsApp (confirmación y recordatorio)
+- Página pública personalizada para cada barbería
+- Reportes de facturación, citas y rendimiento por barbero
+- Panel de administración multi-tenant
+
+## Planes
+
+- Básico: $59.000 COP/mes (hasta 2 barberos)
+- Profesional: $99.000 COP/mes (hasta 6 barberos, recomendado)
+- Premium: $159.000 COP/mes (barberos ilimitados)
+
+## Contacto
+
+- Email: hola@zafirox.com
+- Ubicación: Armenia, Quindío, Colombia

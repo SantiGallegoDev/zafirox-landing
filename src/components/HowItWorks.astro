@@ -1,0 +1,52 @@
+---
+import SectionLabel from './SectionLabel.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Crea tu cuenta',
+    description: 'Registra tu barbería, agrega tus servicios y tus barberos con foto. Listo en 10 minutos.',
+  },
+  {
+    number: '02',
+    title: 'Comparte tu link',
+    description: 'Envía el link de tu página por WhatsApp o redes. Tu cliente elige servicio, barbero, día y hora.',
+  },
+  {
+    number: '03',
+    title: 'Controla todo',
+    description: 'Recibe citas automáticamente, el cliente recibe confirmación por WhatsApp y tú ves todo en tu panel.',
+  },
+];
+---
+
+<section id="como-funciona" class="py-20 lg:py-28 border-t border-gray-700">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="fade-in text-center">
+      <SectionLabel number="03" text="Cómo Funciona" />
+      <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight mb-4">
+        Tres pasos para organizar<br class="hidden sm:block" /> tu barbería
+      </h2>
+      <p class="text-gray-300 text-base lg:text-lg font-light max-w-xl mx-auto leading-relaxed mb-16">
+        Empezar con Zafirox es más fácil que agendar una cita a mano.
+      </p>
+    </div>
+
+    <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 stagger">
+      <!-- Connecting line (desktop) -->
+      <div class="hidden md:block absolute top-12 left-[16.66%] right-[16.66%] h-px bg-gradient-to-r from-gold/40 via-gold to-gold/40"></div>
+
+      {steps.map((step) => (
+        <div class="fade-in relative text-center">
+          <!-- Number -->
+          <div class="relative z-10 w-24 h-24 mx-auto mb-6 rounded-full bg-gray-800 border-2 border-gold/30 flex items-center justify-center">
+            <span class="text-3xl font-black text-gold">{step.number}</span>
+          </div>
+
+          <h3 class="text-xl font-bold mb-3 text-bone">{step.title}</h3>
+          <p class="text-gray-300 text-sm leading-relaxed max-w-xs mx-auto">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

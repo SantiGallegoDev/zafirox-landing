@@ -1,0 +1,31 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import { faq } from '../data/faq';
+---
+
+<section id="faq" class="py-20 lg:py-28 border-t border-gray-700">
+  <div class="max-w-3xl mx-auto px-5">
+    <div class="fade-in text-center">
+      <SectionLabel number="06" text="Preguntas Frecuentes" />
+      <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight mb-12">
+        Resolvemos tus dudas
+      </h2>
+    </div>
+
+    <div class="space-y-3 stagger">
+      {faq.map((item) => (
+        <details class="fade-in group bg-gray-800 border border-gray-700 rounded-xl transition-all duration-300 hover:border-gold/20 open:border-gold/30">
+          <summary class="flex items-center justify-between cursor-pointer px-6 py-5 text-bone font-semibold text-[0.95rem] list-none [&::-webkit-details-marker]:hidden select-none">
+            <span>{item.question}</span>
+            <svg class="w-5 h-5 text-gold shrink-0 ml-4 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-5">
+            <p class="text-gray-300 text-sm leading-relaxed">{item.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

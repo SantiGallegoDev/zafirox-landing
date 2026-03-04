@@ -1,0 +1,77 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import { pricing } from '../data/pricing';
+---
+
+<section id="precios" class="py-20 lg:py-28 border-t border-gray-700">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="fade-in text-center">
+      <SectionLabel number="05" text="Planes y Precios" />
+      <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight mb-4">
+        Elige el plan que se ajuste<br class="hidden sm:block" /> a tu barbería
+      </h2>
+      <p class="text-gray-300 text-base lg:text-lg font-light max-w-xl mx-auto leading-relaxed mb-16">
+        Sin contratos. Pagas mensual. Cancela cuando quieras.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start stagger">
+      {pricing.map((tier) => (
+        <div class:list={[
+          'fade-in rounded-2xl p-8 relative transition-all duration-400',
+          tier.featured
+            ? 'bg-gray-800 border-2 border-gold shadow-[0_0_40px_rgba(198,168,94,0.1)] md:-mt-4 md:mb-0'
+            : 'bg-gray-800 border border-gray-700 hover:border-gold/20',
+        ]}>
+          {/* Featured badge */}
+          {tier.badge && (
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-carbon text-[0.65rem] font-bold tracking-[0.2em] uppercase px-4 py-1 rounded-full">
+              {tier.badge}
+            </span>
+          )}
+
+          {/* Featured glow */}
+          {tier.featured && (
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-gold/5 to-transparent pointer-events-none"></div>
+          )}
+
+          <div class="relative z-10">
+            <h3 class="text-lg font-bold mb-4">{tier.name}</h3>
+
+            <div class="mb-6">
+              <span class="text-[clamp(2rem,4vw,2.8rem)] font-black text-bone">{tier.price}</span>
+              <span class="text-gray-400 text-sm ml-1">{tier.period}</span>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              {tier.features.map((feat) => (
+                <li class="flex items-start gap-3 text-sm text-gray-300">
+                  <svg class="w-5 h-5 text-gold shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  {feat}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="#contacto"
+              class:list={[
+                'block w-full text-center py-3.5 rounded-lg font-bold text-sm tracking-wider uppercase transition-all duration-300',
+                tier.featured
+                  ? 'bg-gold text-carbon hover:bg-[#d4b76a] hover:shadow-[0_4px_20px_rgba(198,168,94,0.3)]'
+                  : 'bg-transparent text-bone border border-gray-500 hover:border-gold hover:text-gold',
+              ]}
+            >
+              {tier.cta}
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="fade-in text-center text-gray-400 text-sm mt-10">
+      Pago por Nequi o Daviplata. Sin pasarela. Sin complicaciones.
+    </p>
+  </div>
+</section>

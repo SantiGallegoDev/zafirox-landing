@@ -1,0 +1,122 @@
+# Zafirox — Plataforma de Agendamiento para Barberías
+
+> Zafirox es una plataforma SaaS de agendamiento online diseñada específicamente para barberías en Colombia. Permite a los dueños de barberías gestionar citas, barberos, servicios y clientes desde una sola plataforma, con notificaciones automáticas por WhatsApp.
+
+## ¿Qué es Zafirox?
+
+Zafirox es un software de agendamiento online para barberías que resuelve tres problemas principales: citas perdidas por usar agenda en papel o WhatsApp, horas muertas por falta de control sobre los horarios de los barberos, y pérdida de ingresos por no tener reportes claros del negocio.
+
+La plataforma permite que los clientes de una barbería agenden sus citas directamente desde el celular, sin necesidad de descargar una aplicación. El dueño de la barbería gestiona todo desde un panel de administración con vista de agenda, gestión de barberos, servicios y reportes.
+
+## Funcionalidades Principales
+
+### Agenda Inteligente
+Los clientes agendan solos desde el celular. El sistema calcula automáticamente la disponibilidad de cada barbero y bloquea los horarios ocupados. No hay cruces de citas ni olvidos.
+
+### Gestión de Barberos
+Cada barbero tiene su propio perfil con foto, horario de trabajo y lista de citas. El administrador organiza su equipo sin necesidad de consultar por WhatsApp.
+
+### Servicios y Combos
+Se pueden crear servicios individuales (corte, barba, cejas) y combinar varios servicios en un paquete. El precio y la duración se calculan automáticamente. El precio de cada servicio es fijo (no varía por barbero) y la duración puede ser fija o un rango (si es rango, se reserva el mayor).
+
+### WhatsApp Automático
+Cuando un cliente agenda una cita, recibe automáticamente un mensaje de confirmación por WhatsApp con todos los detalles (fecha, hora, barbero, servicio). Antes de la cita recibe un recordatorio. El dueño de la barbería no tiene que hacer nada manualmente.
+
+Se utiliza un número centralizado de WhatsApp (de Zafirox) pero los mensajes se personalizan con el nombre y la información de cada barbería.
+
+### Página Web Pública
+Cada barbería tiene su propia página web profesional con sus servicios, barberos y un link de agendamiento directo. Está lista en minutos sin necesidad de conocimientos técnicos.
+
+### Reportes y Exportación
+Reportes claros de facturación, número de citas completadas, rendimiento por barbero y más. Todo exportable a Excel o PDF para análisis detallado.
+
+### Gestión de Horarios
+El administrador puede bloquear cualquier franja horaria de cualquier barbero en cualquier momento (enfermedad, día libre, capacitación). Los clientes solo ven las horas disponibles. La cancelación de citas es configurable: el admin define el tiempo mínimo de anticipación para cancelar.
+
+## Planes y Precios
+
+### Plan Básico — $59.000 COP/mes
+- Hasta 2 barberos
+- Agenda online
+- Página pública
+- WhatsApp (confirmación + recordatorio)
+- Reportes básicos
+- Soporte por WhatsApp
+
+### Plan Profesional — $99.000 COP/mes (Recomendado)
+- Hasta 6 barberos
+- Todo lo del plan Básico
+- Login propio para cada barbero
+- Reportes completos con exportación
+- Servicios combinados (combos)
+- Bloqueo de horarios
+- Soporte prioritario
+
+### Plan Premium — $159.000 COP/mes
+- Barberos ilimitados
+- Todo lo del plan Profesional
+- Dominio propio (próximamente)
+- Funciones avanzadas (próximamente)
+- Soporte dedicado
+
+### Forma de Pago
+El pago es mensual por Nequi o Daviplata. No se requiere tarjeta de crédito ni pasarela de pago. No hay contratos ni permanencia: se puede cancelar cuando se necesite.
+
+No se ofrece prueba gratuita, pero se puede solicitar una demo personalizada.
+
+## Roles del Sistema
+
+- **Admin**: Dueño de la barbería. Gestiona todo: barberos, servicios, citas, horarios y reportes.
+- **Barbero**: Accede a su agenda personal y puede ver sus citas del día. (Disponible desde el plan Profesional).
+- **Cliente**: Agenda citas desde la página pública de la barbería. No necesita crear cuenta ni descargar app.
+
+## Cómo Empezar
+
+1. **Crea tu cuenta**: Registra tu barbería, agrega tus servicios y tus barberos con foto. Toma aproximadamente 10 minutos.
+2. **Comparte tu link**: Envía el link de tu página por WhatsApp o redes sociales. Tu cliente elige servicio, barbero, día y hora.
+3. **Controla todo**: Recibe citas automáticamente, el cliente recibe confirmación por WhatsApp y tú ves todo en tu panel.
+
+## Preguntas Frecuentes
+
+**¿Qué es Zafirox?**
+Zafirox es una plataforma de agendamiento online diseñada específicamente para barberías. Permite que tus clientes agenden desde el celular, gestiona tus barberos, servicios, horarios y te da reportes claros de tu negocio.
+
+**¿Necesito saber de tecnología para usarlo?**
+No. Zafirox está diseñado para ser tan fácil como usar WhatsApp. Registras tu barbería, agregas servicios y barberos, y listo. En 10 minutos estás operando.
+
+**¿Cómo pago la suscripción?**
+Pagas mensual por Nequi o Daviplata. Sin pasarela de pago, sin tarjeta de crédito. Simple.
+
+**¿Mis clientes tienen que descargar una app?**
+No. Todo funciona desde el navegador del celular. Tú compartes un link y tu cliente agenda en segundos.
+
+**¿Cómo funcionan los recordatorios de WhatsApp?**
+Cuando un cliente agenda, recibe automáticamente un mensaje de confirmación por WhatsApp con todos los detalles. Antes de la cita, recibe un recordatorio. Tú no tienes que hacer nada.
+
+**¿Puedo probar gratis?**
+Actualmente no ofrecemos prueba gratuita, pero puedes ver una demo personalizada y comenzar a usar Zafirox desde $59.000 al mes.
+
+**¿Qué pasa si un barbero necesita bloquear un horario?**
+El admin puede bloquear cualquier franja horaria de cualquier barbero en cualquier momento. Los clientes solo ven las horas disponibles.
+
+**¿Puedo cancelar cuando quiera?**
+Sí. No hay contratos ni permanencia. Pagas mes a mes y puedes cancelar cuando lo necesites.
+
+## Stack Tecnológico
+
+- Frontend: Astro (SSR + islas interactivas)
+- Backend: FastAPI (Python)
+- Base de datos: PostgreSQL
+- Autenticación: JWT
+- WhatsApp: API oficial de Meta (Twilio o 360dialog)
+
+## Sobre la Marca
+
+Zafirox es una marca moderna, precisa y premium urbana. Su comunicación es directa, clara, segura y sin tecnicismos. La misión de Zafirox es profesionalizar y organizar barberías modernas mediante tecnología simple, elegante y poderosa.
+
+La visión es convertirse en la plataforma líder de gestión para barberías en Latinoamérica.
+
+## Contacto
+
+- Email: hola@zafirox.com
+- Ubicación: Armenia, Quindío, Colombia

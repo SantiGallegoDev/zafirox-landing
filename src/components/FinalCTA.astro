@@ -1,0 +1,37 @@
+---
+import GoldButton from './GoldButton.astro';
+---
+
+<section id="contacto" class="py-20 lg:py-28 border-t border-gray-700 relative overflow-hidden">
+  <!-- Gold glow -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[radial-gradient(ellipse_at_center,rgba(198,168,94,0.04)_0%,transparent_60%)]"></div>
+  </div>
+
+  <!-- Top gold line -->
+  <div class="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"></div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-5 text-center">
+    <div class="fade-in">
+      <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight mb-6">
+        Tu barbería lista para<br />
+        <span class="text-gold">el siguiente nivel</span>
+      </h2>
+
+      <p class="text-gray-300 text-base lg:text-lg font-light leading-relaxed max-w-xl mx-auto mb-10">
+        Únete a las barberías que ya trabajan con precisión, orden y estilo.
+      </p>
+
+      <GoldButton
+        href="https://wa.me/573000000000?text=Hola%2C+quiero+información+sobre+Zafirox"
+        size="lg"
+      >
+        Hablar por WhatsApp
+      </GoldButton>
+
+      <p class="mt-6 text-gray-400 text-sm">
+        o escribe a <a href="mailto:hola@zafirox.com" class="text-gold hover:underline">hola@zafirox.com</a>
+      </p>
+    </div>
+  </div>
+</section>

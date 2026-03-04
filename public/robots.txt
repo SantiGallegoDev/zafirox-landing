@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://santigallegodev.github.io/zafirox-landing/sitemap-index.xml
