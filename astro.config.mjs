@@ -4,8 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://santigallegodev.github.io',
-  base: '/zafirox-landing',
+  site: 'https://zafirox-landing.vercel.app',
   output: 'static',
   integrations: [
     sitemap({
