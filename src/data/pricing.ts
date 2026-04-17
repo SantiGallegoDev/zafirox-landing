@@ -17,7 +17,7 @@ export const pricing: PricingTier[] = [
     period: 'COP / mes',
     featured: false,
     features: [
-      'Hasta 2 barberos',
+      'Acceso como administrador',
       'Agenda online',
       'Página pública',
       'WhatsApp (confirmación + recordatorio)',

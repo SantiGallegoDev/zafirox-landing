@@ -7,7 +7,7 @@ export const offersSchema: WithContext<Offer>[] = [
     name: 'Zafirox Básico',
     price: '59000',
     priceCurrency: 'COP',
-    description: 'Plan básico para barberías con hasta 2 barberos. Incluye agenda online, página pública, WhatsApp automático y reportes básicos.',
+    description: 'Plan básico para barberías con acceso como administrador. Incluye agenda online, página pública, WhatsApp automático y reportes básicos.',
     eligibleRegion: {
       '@type': 'Place',
       name: 'Colombia',
