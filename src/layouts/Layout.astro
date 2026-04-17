@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import StickyCTA from '../components/StickyCTA.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -24,22 +25,84 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <StickyCTA />
     <WhatsAppButton />
 
-    <!-- Scroll animations -->
+    <!-- Scroll animations + counter utility -->
     <script>
+      // Observe all animation-trigger elements
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('visible');
+              // Trigger counters if present
+              if (entry.target.hasAttribute('data-counter-group')) {
+                animateCounters(entry.target);
+              }
             }
           });
         },
         { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
       );
 
-      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+      document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach((el) => observer.observe(el));
+
+      // Animated counter utility
+      function animateCounters(container) {
+        const counters = container.querySelectorAll('[data-count-to]');
+        counters.forEach(el => {
+          if (el.dataset.counted) return;
+          el.dataset.counted = 'true';
+          const target = parseFloat(el.dataset.countTo);
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix || '';
+          const isDecimal = target % 1 !== 0;
+          const duration = 2500;
+          const start = performance.now();
+
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 4);
+            const current = eased * target;
+            el.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString('es-CO')) + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+        });
+      }
+
+      // Sticky CTA: show after hero, hide at final CTA
+      const hero = document.getElementById('hero');
+      const finalCta = document.getElementById('contacto');
+      const stickyCta = document.getElementById('sticky-cta');
+
+      if (hero && stickyCta) {
+        const stickyObs = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) {
+              stickyCta.classList.remove('translate-y-full');
+            } else {
+              stickyCta.classList.add('translate-y-full');
+            }
+          },
+          { threshold: 0.1 }
+        );
+        stickyObs.observe(hero);
+
+        if (finalCta) {
+          const finalObs = new IntersectionObserver(
+            ([entry]) => {
+              if (entry.isIntersecting) {
+                stickyCta.classList.add('translate-y-full');
+              }
+            },
+            { threshold: 0.3 }
+          );
+          finalObs.observe(finalCta);
+        }
+      }
     </script>
   </body>
 </html>

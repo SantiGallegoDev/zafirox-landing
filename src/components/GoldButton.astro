@@ -13,7 +13,7 @@ const {
   class: className = '',
 } = Astro.props;
 
-const base = 'inline-flex items-center justify-center font-bold tracking-wider uppercase rounded-lg transition-all duration-300 cursor-pointer text-center';
+const base = 'group relative inline-flex items-center justify-center font-bold tracking-wider uppercase rounded-lg transition-all duration-300 cursor-pointer text-center overflow-hidden';
 
 const sizes = {
   base: 'px-7 py-3.5 text-[0.8rem]',
@@ -21,11 +21,16 @@ const sizes = {
 };
 
 const variants = {
-  primary: 'bg-gold text-carbon hover:bg-[#d4b76a] hover:shadow-[0_4px_20px_rgba(198,168,94,0.3)]',
-  ghost: 'bg-transparent text-bone border border-gray-500 hover:border-gold hover:text-gold',
+  primary: 'bg-gold text-carbon hover:bg-[#d4b76a] hover:shadow-[0_4px_20px_rgba(198,168,94,0.3)] hover:scale-[1.02]',
+  ghost: 'bg-transparent text-bone border border-gray-500 hover:border-gold hover:text-gold hover:scale-[1.02]',
 };
+
+const shimmer = variant === 'primary';
 ---
 
 <a href={href} class:list={[base, sizes[size], variants[variant], className]}>
-  <slot />
+  {shimmer && (
+    <span class="absolute inset-0 -translate-x-full group-hover:animate-shimmer-sweep bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"></span>
+  )}
+  <span class="relative z-10"><slot /></span>
 </a>

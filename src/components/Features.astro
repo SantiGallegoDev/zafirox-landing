@@ -12,10 +12,14 @@ const icons: Record<string, string> = {
 };
 ---
 
-<section id="funcionalidades" class="py-20 lg:py-28 border-t border-gray-700">
-  <div class="max-w-7xl mx-auto px-5">
+<section id="funcionalidades" class="relative py-20 lg:py-28 overflow-hidden">
+  <div class="section-divider"></div>
+  <!-- Spotlight glow -->
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-[radial-gradient(ellipse,rgba(198,168,94,0.03)_0%,transparent_70%)] pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-5 relative z-10">
     <div class="fade-in">
-      <SectionLabel number="02" text="La Solución" />
+      <SectionLabel number="04" text="La Solución" />
       <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight mb-4">
         Todo lo que necesitas.<br class="hidden sm:block" /> Nada que te sobre.
       </h2>
@@ -26,8 +30,8 @@ const icons: Record<string, string> = {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger">
       {features.map((feat) => (
-        <div class="fade-in group bg-gray-800 border border-gray-700 rounded-xl p-7 transition-all duration-400 hover:border-gold/20 hover:-translate-y-0.5 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
-          <div class="w-12 h-12 rounded-lg bg-gold-soft flex items-center justify-center text-gold mb-5" set:html={icons[feat.icon]} />
+        <div class="fade-in group bg-gray-800 border border-gray-700 rounded-xl p-7 transition-all duration-500 hover:border-gold/20 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(198,168,94,0.06)]">
+          <div class="w-12 h-12 rounded-lg bg-gold-soft flex items-center justify-center text-gold mb-5 transition-all duration-300 group-hover:bg-gold/15 group-hover:rotate-3" set:html={icons[feat.icon]} />
           <h3 class="text-lg font-bold mb-3 text-bone">{feat.title}</h3>
           <p class="text-gray-300 text-sm leading-relaxed">{feat.description}</p>
         </div>

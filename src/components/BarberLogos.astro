@@ -1,0 +1,34 @@
+---
+const barberShops = [
+  "Barbería Los Cracks",
+  "Studio Barber",
+  "The King Barbershop",
+  "Corte & Estilo",
+  "Urban Cuts Armenia",
+  "Barbería El Patrón",
+  "Estilo Único",
+  "Master Barber Co.",
+];
+---
+
+<section class="relative py-10 overflow-hidden border-t border-gray-700/50">
+  <p class="text-center text-gray-400 text-xs tracking-[0.3em] uppercase mb-6">
+    Barberías que ya confían en Zafirox
+  </p>
+
+  <div class="relative overflow-hidden">
+    <!-- Fade edges -->
+    <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-carbon to-transparent z-10"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-carbon to-transparent z-10"></div>
+
+    <!-- Marquee -->
+    <div class="flex animate-marquee whitespace-nowrap">
+      {[...barberShops, ...barberShops].map(name => (
+        <span class="inline-flex items-center gap-2 mx-6 text-gray-300/60 text-sm font-medium tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold/40"></span>
+          {name}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

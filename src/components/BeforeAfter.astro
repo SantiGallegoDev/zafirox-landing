@@ -1,0 +1,64 @@
+---
+import SectionLabel from './SectionLabel.astro';
+
+const comparisons = [
+  { before: "Citas en libreta o de memoria", after: "Agenda online 24/7" },
+  { before: "Clientes llaman para agendar", after: "Clientes agendan solos" },
+  { before: "No sabes cuánto facturas al mes", after: "Reportes claros al instante" },
+  { before: "Barberos preguntan 'quién sigue?'", after: "Cada barbero ve su agenda" },
+  { before: "Recordatorios a mano por WhatsApp", after: "WhatsApp automático" },
+];
+---
+
+<section id="antes-despues" class="relative py-20 lg:py-28 overflow-hidden">
+  <div class="section-divider"></div>
+
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-14 fade-in">
+      <SectionLabel number="03" text="El cambio" />
+      <h2 class="text-[clamp(1.6rem,4vw,2.5rem)] font-bold mt-4">
+        Tu barbería <span class="text-gold">antes y después</span> de Zafirox
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-0 md:gap-8 max-w-4xl mx-auto">
+      <!-- Before column -->
+      <div class="fade-in">
+        <div class="text-center mb-6">
+          <span class="inline-block text-[0.65rem] font-bold tracking-[0.3em] uppercase text-error/80 border border-error/20 px-4 py-1.5 rounded-full bg-error/5">
+            Sin Zafirox
+          </span>
+        </div>
+        <div class="space-y-3">
+          {comparisons.map(item => (
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-error/5 border border-error/10">
+              <svg class="w-4 h-4 text-error/60 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              <span class="text-gray-300 text-sm">{item.before}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- After column -->
+      <div class="fade-in mt-6 md:mt-0">
+        <div class="text-center mb-6">
+          <span class="inline-block text-[0.65rem] font-bold tracking-[0.3em] uppercase text-gold border border-gold/20 px-4 py-1.5 rounded-full bg-gold/5">
+            Con Zafirox
+          </span>
+        </div>
+        <div class="space-y-3">
+          {comparisons.map(item => (
+            <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-gold/5 border border-gold/10">
+              <svg class="w-4 h-4 text-gold shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-bone text-sm font-medium">{item.after}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

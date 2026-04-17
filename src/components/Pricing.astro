@@ -3,30 +3,39 @@ import SectionLabel from './SectionLabel.astro';
 import { pricing } from '../data/pricing';
 ---
 
-<section id="precios" class="py-20 lg:py-28 border-t border-gray-700">
+<section id="precios" class="relative py-20 lg:py-28 overflow-hidden">
+  <div class="section-divider"></div>
+
   <div class="max-w-7xl mx-auto px-5">
     <div class="fade-in text-center">
-      <SectionLabel number="05" text="Planes y Precios" />
+      <SectionLabel number="08" text="Planes y Precios" />
       <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight mb-4">
         Elige el plan que se ajuste<br class="hidden sm:block" /> a tu barbería
       </h2>
-      <p class="text-gray-300 text-base lg:text-lg font-light max-w-xl mx-auto leading-relaxed mb-16">
+      <p class="text-gray-300 text-base lg:text-lg font-light max-w-xl mx-auto leading-relaxed mb-6">
         Sin contratos. Pagas mensual. Cancela cuando quieras.
       </p>
+
+      <!-- Urgency banner -->
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gold/10 border border-gold/20 mb-14">
+        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+        <span class="text-gold text-xs font-semibold tracking-wide">Precio de lanzamiento — cupos limitados</span>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start stagger">
       {pricing.map((tier) => (
         <div class:list={[
-          'fade-in rounded-2xl p-8 relative transition-all duration-400',
+          'fade-in rounded-2xl p-8 relative transition-all duration-400 hover:shadow-[0_0_30px_rgba(198,168,94,0.06)]',
           tier.featured
-            ? 'bg-gray-800 border-2 border-gold shadow-[0_0_40px_rgba(198,168,94,0.1)] md:-mt-4 md:mb-0'
+            ? 'bg-gray-800 border-2 border-gold animate-border-pulse shadow-[0_0_40px_rgba(198,168,94,0.1)] md:-mt-4 md:mb-0'
             : 'bg-gray-800 border border-gray-700 hover:border-gold/20',
         ]}>
-          {/* Featured badge */}
+          {/* Featured badge with shimmer */}
           {tier.badge && (
-            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-carbon text-[0.65rem] font-bold tracking-[0.2em] uppercase px-4 py-1 rounded-full">
-              {tier.badge}
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-carbon text-[0.65rem] font-bold tracking-[0.2em] uppercase px-4 py-1 rounded-full overflow-hidden">
+              <span class="relative z-10">{tier.badge}</span>
+              <span class="absolute inset-0 bg-[linear-gradient(135deg,transparent_30%,rgba(255,255,255,0.3)_50%,transparent_70%)] bg-[length:200%_auto] animate-shimmer"></span>
             </span>
           )}
 
@@ -57,13 +66,16 @@ import { pricing } from '../data/pricing';
             <a
               href="#contacto"
               class:list={[
-                'block w-full text-center py-3.5 rounded-lg font-bold text-sm tracking-wider uppercase transition-all duration-300',
+                'group relative block w-full text-center py-3.5 rounded-lg font-bold text-sm tracking-wider uppercase transition-all duration-300 overflow-hidden',
                 tier.featured
-                  ? 'bg-gold text-carbon hover:bg-[#d4b76a] hover:shadow-[0_4px_20px_rgba(198,168,94,0.3)]'
-                  : 'bg-transparent text-bone border border-gray-500 hover:border-gold hover:text-gold',
+                  ? 'bg-gold text-carbon hover:bg-[#d4b76a] hover:shadow-[0_4px_20px_rgba(198,168,94,0.3)] hover:scale-[1.02]'
+                  : 'bg-transparent text-bone border border-gray-500 hover:border-gold hover:text-gold hover:scale-[1.02]',
               ]}
             >
-              {tier.cta}
+              {tier.featured && (
+                <span class="absolute inset-0 -translate-x-full group-hover:animate-shimmer-sweep bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"></span>
+              )}
+              <span class="relative z-10">{tier.cta}</span>
             </a>
           </div>
         </div>

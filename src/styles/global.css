@@ -3,6 +3,7 @@
 @theme {
   --color-carbon: #0D0D0D;
   --color-carbon-light: #1A1A1A;
+  --color-carbon-deep: #080808;
   --color-gold: #C6A85E;
   --color-gold-soft: rgba(198, 168, 94, 0.15);
   --color-gold-glow: rgba(198, 168, 94, 0.25);
@@ -15,6 +16,7 @@
   --color-gray-300: #999999;
   --color-sapphire: #1F3C88;
   --color-steel: #2A2A2A;
+  --color-error: #E05252;
 
   --font-sans: 'Montserrat', system-ui, sans-serif;
 
@@ -23,12 +25,20 @@
   --animate-float: float 3s ease-in-out infinite;
   --animate-glow-pulse: glow-pulse 4s ease-in-out infinite alternate;
   --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-mesh-drift-1: mesh-drift-1 20s ease-in-out infinite;
+  --animate-mesh-drift-2: mesh-drift-2 25s ease-in-out infinite;
+  --animate-shimmer-sweep: shimmer-sweep 2s ease-in-out;
+  --animate-border-pulse: border-pulse 3s ease-in-out infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-play-ring: play-ring 2s ease-out infinite;
+  --animate-typing-cursor: typing-cursor 0.8s step-end infinite;
+  --animate-line-grow: line-grow 1.5s ease-out forwards;
 }
 
 /* Font faces */
 @font-face {
   font-family: 'Montserrat';
-  src: url('/zafirox-landing/fonts/Montserrat-Variable.woff2') format('woff2');
+  src: url('/fonts/Montserrat-Variable.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -37,14 +47,17 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('/zafirox-landing/fonts/Montserrat-Variable-Latin.woff2') format('woff2');
+  src: url('/fonts/Montserrat-Variable-Latin.woff2') format('woff2');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Keyframes */
+/* ═══════════════════════════════
+   Keyframes
+   ═══════════════════════════════ */
+
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -70,40 +83,184 @@
   50% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0); }
 }
 
-/* Selection */
+@keyframes mesh-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(30px, -20px); }
+  50% { transform: translate(-20px, 15px); }
+  75% { transform: translate(15px, 25px); }
+}
+
+@keyframes mesh-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-25px, 20px); }
+  50% { transform: translate(20px, -30px); }
+  75% { transform: translate(-15px, -10px); }
+}
+
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes border-pulse {
+  0%, 100% { border-color: rgba(198, 168, 94, 0.3); }
+  50% { border-color: rgba(198, 168, 94, 0.6); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes play-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes typing-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes line-grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ═══════════════════════════════
+   Selection & Scrolling
+   ═══════════════════════════════ */
+
 ::selection {
   background: var(--color-gold);
   color: var(--color-carbon);
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--color-carbon); }
 ::-webkit-scrollbar-thumb { background: var(--color-gray-500); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-gold); }
 
-/* Fade-in utility */
+/* ═══════════════════════════════
+   Noise texture overlay
+   ═══════════════════════════════ */
+
+main::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ═══════════════════════════════
+   Scroll animation classes
+   ═══════════════════════════════ */
+
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
-
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Stagger children */
-.stagger > .fade-in:nth-child(1) { transition-delay: 0s; }
-.stagger > .fade-in:nth-child(2) { transition-delay: 0.1s; }
-.stagger > .fade-in:nth-child(3) { transition-delay: 0.2s; }
-.stagger > .fade-in:nth-child(4) { transition-delay: 0.25s; }
-.stagger > .fade-in:nth-child(5) { transition-delay: 0.3s; }
-.stagger > .fade-in:nth-child(6) { transition-delay: 0.35s; }
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ═══════════════════════════════
+   Stagger children (extended to 10)
+   ═══════════════════════════════ */
+
+.stagger > .fade-in:nth-child(1),
+.stagger > .scale-in:nth-child(1) { transition-delay: 0s; }
+.stagger > .fade-in:nth-child(2),
+.stagger > .scale-in:nth-child(2) { transition-delay: 0.1s; }
+.stagger > .fade-in:nth-child(3),
+.stagger > .scale-in:nth-child(3) { transition-delay: 0.15s; }
+.stagger > .fade-in:nth-child(4),
+.stagger > .scale-in:nth-child(4) { transition-delay: 0.2s; }
+.stagger > .fade-in:nth-child(5),
+.stagger > .scale-in:nth-child(5) { transition-delay: 0.25s; }
+.stagger > .fade-in:nth-child(6),
+.stagger > .scale-in:nth-child(6) { transition-delay: 0.3s; }
+.stagger > .fade-in:nth-child(7),
+.stagger > .scale-in:nth-child(7) { transition-delay: 0.35s; }
+.stagger > .fade-in:nth-child(8),
+.stagger > .scale-in:nth-child(8) { transition-delay: 0.4s; }
+.stagger > .fade-in:nth-child(9),
+.stagger > .scale-in:nth-child(9) { transition-delay: 0.45s; }
+.stagger > .fade-in:nth-child(10),
+.stagger > .scale-in:nth-child(10) { transition-delay: 0.5s; }
+
+/* ═══════════════════════════════
+   Gold section divider
+   ═══════════════════════════════ */
+
+.section-divider {
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(198, 168, 94, 0.3), transparent);
+}
+
+/* ═══════════════════════════════
+   Reduced motion
+   ═══════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
