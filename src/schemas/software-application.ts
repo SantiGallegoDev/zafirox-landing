@@ -14,9 +14,4 @@ export const softwareSchema: WithContext<SoftwareApplication> = {
     priceCurrency: 'COP',
     offerCount: 3,
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '47',
-  },
 };
