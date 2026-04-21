@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://zafirox-landing.vercel.app',
+  site: 'https://zafirox.com.co',
   output: 'static',
   integrations: [
     sitemap({

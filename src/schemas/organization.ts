@@ -4,8 +4,8 @@ export const organizationSchema: WithContext<Organization> = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Zafirox',
-  url: 'https://zafirox-landing.vercel.app/',
-  logo: 'https://zafirox-landing.vercel.app/favicon.svg',
+  url: 'https://zafirox.com.co/',
+  logo: 'https://zafirox.com.co/favicon.svg',
   description: 'Plataforma de agendamiento online para negocios de servicios en Colombia: barberías, salones de belleza, estudios de tatuajes, uñas, spa y más. Gestiona citas, equipo, servicios y clientes desde un solo lugar.',
   foundingDate: '2026',
   areaServed: {
