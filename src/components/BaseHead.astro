@@ -14,7 +14,7 @@ const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL :
 
 const {
   title = 'Zafirox — Software de Agendamiento para Barberías, Salones, Tatuajes y más',
-  description = 'Zafirox es la plataforma de agendamiento online para barberías, salones de belleza, estudios de tatuajes y todo negocio de servicios en Colombia. Agenda inteligente, WhatsApp automático y reportes. 7 días gratis. Desde $59.000/mes.',
+  description = 'Zafirox es la plataforma de agendamiento online para barberías, salones de belleza, estudios de tatuajes y todo negocio de servicios en Colombia. Agenda inteligente, WhatsApp automático y reportes. 3 días gratis. Desde $59.000/mes.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -52,7 +52,7 @@ const ogImage = new URL(`${BASE}og-image.png`, Astro.site).href;
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
-<meta name="twitter:description" content="La plataforma que profesionaliza negocios de servicios: barberías, salones, tatuajes y más. 7 días gratis." />
+<meta name="twitter:description" content="La plataforma que profesionaliza negocios de servicios: barberías, salones, tatuajes y más. 3 días gratis." />
 <meta name="twitter:image" content={ogImage} />
 
 <!-- JSON-LD Structured Data -->

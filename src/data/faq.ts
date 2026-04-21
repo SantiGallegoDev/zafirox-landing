@@ -18,7 +18,7 @@ export const faq: FAQItem[] = [
   },
   {
     question: '¿Puedo probar gratis?',
-    answer: 'Sí. Tienes 7 días de prueba gratis con acceso completo. Si te convence, continúas con el plan que elijas. Si no, no pagas nada.',
+    answer: 'Sí. Tienes 3 días de prueba gratis con acceso completo. Si te convence, continúas con el plan que elijas. Si no, no pagas nada.',
   },
   {
     question: '¿Cómo pago la suscripción?',
