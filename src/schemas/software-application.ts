@@ -6,7 +6,7 @@ export const softwareSchema: WithContext<SoftwareApplication> = {
   name: 'Zafirox',
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web',
-  description: 'Software de agendamiento online para barberías. Gestiona citas, barberos, servicios y clientes con notificaciones automáticas por WhatsApp.',
+  description: 'Software de agendamiento online para negocios de servicios (barberías, salones de belleza, estudios de tatuajes, uñas, spa). Gestiona citas, equipo, servicios y clientes con notificaciones automáticas por WhatsApp.',
   offers: {
     '@type': 'AggregateOffer',
     lowPrice: '59000',

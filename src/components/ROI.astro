@@ -1,0 +1,58 @@
+---
+import SectionLabel from './SectionLabel.astro';
+import { roiMetrics, roiDisclaimer } from '../data/roi';
+---
+
+<section id="roi" class="relative py-20 lg:py-28 overflow-hidden bg-carbon-deep">
+  <div class="section-divider"></div>
+
+  <!-- Bright halo behind title for the "luminous premium" feel -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[radial-gradient(ellipse,rgba(255,255,255,0.03)_0%,transparent_70%)]"></div>
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-[radial-gradient(ellipse,rgba(198,168,94,0.08)_0%,transparent_70%)]"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-5 relative z-10">
+    <div class="fade-in text-center">
+      <SectionLabel number="07" text="Retorno real" />
+      <h2 class="text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold leading-tight mb-4">
+        Números que pone Zafirox<br class="hidden sm:block" />
+        <span class="text-gold">en tu bolsillo</span>
+      </h2>
+      <p class="text-gray-300 text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed mb-14">
+        No es magia. Es organizar mejor lo que ya haces. Así es como el plan se paga solo en el primer mes.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 stagger scale-in" data-counter-group>
+      {roiMetrics.map((m) => (
+        <div class="scale-in relative bg-gray-800 rounded-2xl border border-gray-700 border-t-2 border-t-gold/40 hover:border-t-gold transition-all duration-400 overflow-hidden group hover:shadow-[0_0_30px_rgba(198,168,94,0.08)]">
+          <!-- Soft gradient top highlight -->
+          <div class="absolute inset-0 bg-gradient-to-b from-white/[0.025] via-transparent to-gold/[0.03] pointer-events-none"></div>
+
+          <div class="relative z-10 p-6 sm:p-7 text-center">
+            <div class="text-[clamp(2.2rem,4.5vw,3.2rem)] font-black text-gold leading-none mb-3">
+              <span data-count-to={m.countTo} data-prefix={m.prefix || ''} data-suffix={m.suffix || ''}>
+                {m.prefix || ''}0{m.suffix || ''}
+              </span>
+            </div>
+            <div class="text-bone text-sm font-bold mb-2">{m.label}</div>
+            <p class="text-gray-400 text-xs leading-relaxed">{m.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- ROI calculation strip -->
+    <div class="fade-in mt-14 max-w-3xl mx-auto">
+      <div class="glass-card rounded-2xl p-6 sm:p-8 text-center">
+        <p class="text-gray-300 text-sm leading-relaxed mb-3">
+          <span class="text-bone font-semibold">Así de simple:</span>
+          solo <span class="text-gold font-bold">2 citas recuperadas al mes</span> ya cubren el plan Profesional.
+          Todo lo demás es ganancia directa para ti.
+        </p>
+        <p class="text-gray-500 text-xs leading-relaxed">{roiDisclaimer}</p>
+      </div>
+    </div>
+  </div>
+</section>

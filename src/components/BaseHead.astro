@@ -13,8 +13,8 @@ interface Props {
 const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
 
 const {
-  title = 'Zafirox — Software de Agendamiento para Barberías | Organiza tu Estudio',
-  description = 'Zafirox es la plataforma de agendamiento online para barberías en Colombia. Agenda inteligente, gestión de barberos, WhatsApp automático y reportes. Desde $59.000/mes.',
+  title = 'Zafirox — Software de Agendamiento para Barberías, Salones, Tatuajes y más',
+  description = 'Zafirox es la plataforma de agendamiento online para barberías, salones de belleza, estudios de tatuajes y todo negocio de servicios en Colombia. Agenda inteligente, WhatsApp automático y reportes. 7 días gratis. Desde $59.000/mes.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -26,7 +26,7 @@ const ogImage = new URL(`${BASE}og-image.png`, Astro.site).href;
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="keywords" content="software barbería, agendamiento barbería, agenda barbería online, gestión barbería, app barbería Colombia, citas barbería, software citas barbería, plataforma barbería" />
+<meta name="keywords" content="software de agendamiento, agendamiento online, agenda barbería, agenda salón de belleza, software tatuajes, citas online Colombia, gestión de citas, agenda spa, software uñas, reservas online, app de citas, agenda online Colombia, Armenia Quindío" />
 <meta name="author" content="Zafirox" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href={canonicalURL} />
@@ -52,7 +52,7 @@ const ogImage = new URL(`${BASE}og-image.png`, Astro.site).href;
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
-<meta name="twitter:description" content="La plataforma que transforma barberías en estudios profesionales." />
+<meta name="twitter:description" content="La plataforma que profesionaliza negocios de servicios: barberías, salones, tatuajes y más. 7 días gratis." />
 <meta name="twitter:image" content={ogImage} />
 
 <!-- JSON-LD Structured Data -->

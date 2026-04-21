@@ -7,17 +7,17 @@ export interface PainPoint {
 export const painpoints: PainPoint[] = [
   {
     icon: 'calendar-x',
-    title: 'Citas perdidas, clientes frustrados',
-    description: 'Anotar citas en papel o en la cabeza lleva a olvidos, cruces y clientes que no vuelven.',
+    title: 'Citas que se pierden entre WhatsApps',
+    description: 'Agendar en libreta o por chat lleva a olvidos, dobles reservas y clientes que no vuelven por la mala experiencia.',
   },
   {
     icon: 'clock',
-    title: 'Horas muertas sin control',
-    description: 'No sabes cuántas citas tienes mañana, ni qué barbero está libre. Tu agenda es un caos.',
+    title: 'Horas muertas sin que lo notes',
+    description: 'No sabes cuántas citas tienes mañana, ni qué profesional está libre. Tu agenda depende de tu memoria.',
   },
   {
     icon: 'chart-down',
-    title: 'Plata que se pierde sin darte cuenta',
-    description: 'Sin reportes, no sabes cuánto facturaste, quién es tu mejor barbero, ni cuánto dejaste de ganar.',
+    title: 'Plata que se fuga sin explicación',
+    description: 'Sin reportes claros, no sabes cuánto facturaste, quién produce más, ni cuánto dejas de ganar por inasistencias.',
   },
 ];
