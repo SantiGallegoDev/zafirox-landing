@@ -1,0 +1,626 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import {
+  pitches,
+  idealProspect,
+  badProspect,
+  valueProps,
+  callFramework,
+  objections,
+  normalClientFAQ,
+  technicalFAQ,
+  planGuide,
+  closeTechniques,
+  dos,
+  donts,
+  cheatSheetFacts,
+} from '../data/salesGuide';
+
+const toc = [
+  { id: 'como-usar', label: '01 — Cómo usar esta guía' },
+  { id: 'elevator', label: '02 — Elevator pitch' },
+  { id: 'icp', label: '03 — A quién le vendemos' },
+  { id: 'valor', label: '04 — Propuesta de valor' },
+  { id: 'framework', label: '05 — Estructura de contacto' },
+  { id: 'objeciones', label: '06 — Objeciones y respuestas' },
+  { id: 'cliente-normal', label: '07 — Preguntas del cliente común' },
+  { id: 'cliente-tecnico', label: '08 — Preguntas del cliente técnico' },
+  { id: 'planes', label: '09 — Qué plan recomendar' },
+  { id: 'cierre', label: '10 — Técnicas de cierre' },
+  { id: 'reglas', label: '11 — Do\'s & Don\'ts' },
+  { id: 'cheat', label: '12 — Cheat sheet' },
+];
+---
+
+<Layout
+  title="Guía de Venta — Zafirox"
+  description="Guía interna para el equipo que contacta prospectos de Zafirox. Pitch, objeciones, FAQs del cliente común y técnico, planes, cierre y onboarding."
+  minimal={true}
+>
+  <!-- ═══════════════════════════════
+       HERO
+       ═══════════════════════════════ -->
+  <section class="relative pt-28 lg:pt-36 pb-16 overflow-hidden">
+    <!-- Radial glow -->
+    <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse,rgba(212,181,107,0.08)_0%,transparent_70%)] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-5 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 mb-6">
+        <span class="w-2 h-2 rounded-full bg-gold animate-pulse"></span>
+        <span class="text-gold text-[0.7rem] font-semibold tracking-[0.25em] uppercase">Documento interno — uso del equipo de ventas</span>
+      </div>
+
+      <h1 class="text-[clamp(2.2rem,5vw,3.8rem)] font-black leading-[1.1] tracking-tight mb-5">
+        Guía de <span class="text-gold">Venta</span>
+      </h1>
+
+      <p class="text-gray-300 text-base lg:text-lg font-light max-w-2xl mx-auto leading-relaxed">
+        Todo lo que necesitas para contactar un prospecto, responder sus dudas,
+        manejar sus objeciones y cerrar la venta. Desde el pitch de 10 segundos
+        hasta la FAQ del cliente más quisquilloso.
+      </p>
+
+      <p class="text-gray-400 text-sm mt-3 italic">
+        Léelo una vez completo. Después úsalo como referencia mientras hablas.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       LAYOUT: TOC sticky + contenido
+       ═══════════════════════════════ -->
+  <div class="max-w-7xl mx-auto px-5 pb-24">
+    <div class="lg:grid lg:grid-cols-[260px_1fr] lg:gap-12">
+      <!-- TOC -->
+      <aside class="hidden lg:block">
+        <nav class="sticky top-24 py-6">
+          <p class="text-[0.65rem] font-semibold tracking-[0.3em] uppercase text-gold mb-4">Contenido</p>
+          <ul class="space-y-2">
+            {toc.map((item) => (
+              <li>
+                <a
+                  href={`#${item.id}`}
+                  data-toc-link
+                  class="toc-link block text-[0.8rem] text-gray-400 hover:text-gold transition-colors py-1 border-l border-gray-700 pl-3 hover:border-gold"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-6 pt-6 border-t border-gray-700">
+            <a
+              href="/"
+              class="text-[0.7rem] text-gray-400 hover:text-gold transition-colors tracking-wider uppercase"
+            >
+              ← Volver a la landing
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- CONTENIDO -->
+      <div class="space-y-20">
+        <!-- 01 — Cómo usar esta guía -->
+        <section id="como-usar">
+          <SectionLabel number="01" text="Cómo usar esta guía" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">Léela una vez. Úsala mil.</h2>
+
+          <div class="grid md:grid-cols-3 gap-5">
+            <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+              <div class="text-gold text-xs font-bold tracking-wider uppercase mb-2">Antes del contacto</div>
+              <p class="text-sm text-gray-300 leading-relaxed">
+                Revisa <em>elevator pitch</em> y <em>propuesta de valor</em>.
+                Ten abierta la página en otra pestaña para copiar frases textuales.
+              </p>
+            </div>
+            <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+              <div class="text-gold text-xs font-bold tracking-wider uppercase mb-2">Durante la conversación</div>
+              <p class="text-sm text-gray-300 leading-relaxed">
+                Si aparece una objeción, busca la sección <em>objeciones</em>. Si
+                te hacen una pregunta técnica, busca <em>cliente técnico</em>. Copia-pega con confianza.
+              </p>
+            </div>
+            <div class="bg-gray-800 border border-gray-700 rounded-xl p-5">
+              <div class="text-gold text-xs font-bold tracking-wider uppercase mb-2">Después del cierre</div>
+              <p class="text-sm text-gray-300 leading-relaxed">
+                Revisa el <em>onboarding</em> en el paso 05 del framework. Un
+                cliente que no activa en semana 1 cancela en semana 2.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8 p-5 rounded-xl border border-gold/30 bg-gold/5">
+            <p class="text-sm text-bone leading-relaxed">
+              <strong class="text-gold">Regla de oro:</strong> esta guía es tu mapa, no tu guion.
+              Habla en tus palabras, con tu tono. La gente compra a humanos, no a robots que recitan.
+            </p>
+          </div>
+        </section>
+
+        <!-- 02 — Elevator pitch -->
+        <section id="elevator">
+          <SectionLabel number="02" text="Elevator Pitch" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">Tres versiones. Úsa la que pida el momento.</h2>
+
+          <div class="space-y-4">
+            {pitches.map((p, i) => (
+              <div class="bg-gray-800 border border-gray-700 rounded-xl overflow-hidden">
+                <div class="flex items-center justify-between px-5 py-3 bg-gray-700/50 border-b border-gray-700">
+                  <span class="text-gold text-xs font-bold tracking-[0.2em] uppercase">{p.duration}</span>
+                  <span class="text-gray-500 text-xs">#{String(i + 1).padStart(2, '0')}</span>
+                </div>
+                <p class="px-5 py-5 text-bone leading-relaxed text-sm lg:text-base">
+                  {p.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 03 — ICP -->
+        <section id="icp">
+          <SectionLabel number="03" text="A quién le vendemos" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">Conocer al ideal ahorra horas de perseguir al equivocado.</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- Ideal -->
+            <div class="bg-gradient-to-br from-gold/10 to-transparent border border-gold/30 rounded-xl p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <h3 class="text-base font-bold text-gold uppercase tracking-wider">{idealProspect.title}</h3>
+              </div>
+              <ul class="space-y-2.5">
+                {idealProspect.items.map((item) => (
+                  <li class="text-sm text-gray-200 leading-relaxed flex gap-2">
+                    <span class="text-gold mt-1 shrink-0">›</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Red flags -->
+            <div class="bg-gray-800 border border-error/30 rounded-xl p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-5 h-5 text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                <h3 class="text-base font-bold text-error uppercase tracking-wider">{badProspect.title}</h3>
+              </div>
+              <ul class="space-y-2.5">
+                {badProspect.items.map((item) => (
+                  <li class="text-sm text-gray-300 leading-relaxed flex gap-2">
+                    <span class="text-error/70 mt-1 shrink-0">›</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 — Propuesta de valor -->
+        <section id="valor">
+          <SectionLabel number="04" text="Propuesta de valor" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">Empareja el dolor con la solución. No recites features.</h2>
+
+          <div class="space-y-4">
+            {valueProps.map((vp) => (
+              <div class="bg-gray-800 border border-gray-700 rounded-xl overflow-hidden">
+                <div class="grid md:grid-cols-2">
+                  <div class="p-5 md:border-r border-gray-700">
+                    <div class="text-error/80 text-[0.65rem] font-bold tracking-[0.2em] uppercase mb-2">El dolor</div>
+                    <p class="text-gray-200 italic leading-relaxed">{vp.pain}</p>
+                  </div>
+                  <div class="p-5 bg-gray-700/20">
+                    <div class="text-gold text-[0.65rem] font-bold tracking-[0.2em] uppercase mb-2">Lo que dices</div>
+                    <p class="text-bone leading-relaxed">{vp.solution}</p>
+                    {vp.proof && (
+                      <p class="text-xs text-gold/80 mt-3 pt-3 border-t border-gray-700">
+                        💡 {vp.proof}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 05 — Framework -->
+        <section id="framework">
+          <SectionLabel number="05" text="Estructura de contacto" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">Cinco pasos. En orden. Siempre.</h2>
+
+          <div class="space-y-5">
+            {callFramework.map((step) => (
+              <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 hover:border-gold/20 transition-colors">
+                <div class="flex flex-col md:flex-row gap-6">
+                  <div class="md:w-24 shrink-0">
+                    <span class="text-4xl font-black text-gold/30">{step.number}</span>
+                  </div>
+                  <div class="flex-1">
+                    <h3 class="text-lg font-bold text-bone mb-1">{step.title}</h3>
+                    <p class="text-sm text-gold mb-4">{step.goal}</p>
+
+                    <div class="mb-4">
+                      <div class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">Frases listas</div>
+                      <ul class="space-y-2">
+                        {step.scripts.map((s) => (
+                          <li class="text-sm text-bone bg-carbon-deep/50 border border-gray-700 rounded-lg px-4 py-3 leading-relaxed">
+                            {s}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      <div class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">Tips</div>
+                      <ul class="space-y-1.5">
+                        {step.tips.map((t) => (
+                          <li class="text-sm text-gray-300 leading-relaxed flex gap-2">
+                            <span class="text-gold mt-0.5 shrink-0">›</span>
+                            <span>{t}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 06 — Objeciones -->
+        <section id="objeciones">
+          <SectionLabel number="06" text="Objeciones y respuestas" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-3">El playbook de las 10 objeciones más comunes.</h2>
+          <p class="text-gray-300 mb-8 text-sm max-w-2xl leading-relaxed">
+            Cada tarjeta tiene el <strong>contexto</strong> (por qué lo dicen), las
+            <strong> respuestas</strong> (qué decir tú) y un <strong> followup</strong> (qué hacer si insiste).
+          </p>
+
+          <div class="space-y-3">
+            {objections.map((o, i) => (
+              <details class="group bg-gray-800 border border-gray-700 rounded-xl overflow-hidden transition-all duration-300 hover:border-gold/20 open:border-gold/30 open:border-l-4 open:border-l-gold">
+                <summary class="flex items-center justify-between cursor-pointer px-5 py-4 list-none [&::-webkit-details-marker]:hidden select-none gap-4">
+                  <div class="flex items-start gap-3 flex-1 min-w-0">
+                    <span class="text-gold text-xs font-bold tracking-wider shrink-0 mt-0.5">{String(i + 1).padStart(2, '0')}</span>
+                    <span class="text-bone font-semibold text-sm lg:text-base">{o.objection}</span>
+                  </div>
+                  <svg class="w-5 h-5 text-gray-400 group-open:text-gold shrink-0 transition-all duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </summary>
+                <div class="px-5 pb-5 pt-1 space-y-4">
+                  <div>
+                    <div class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">Contexto</div>
+                    <p class="text-sm text-gray-300 leading-relaxed">{o.context}</p>
+                  </div>
+                  <div>
+                    <div class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-gold mb-2">Respuestas en orden</div>
+                    <ol class="space-y-2">
+                      {o.responses.map((r, idx) => (
+                        <li class="text-sm text-bone bg-carbon-deep/50 border border-gray-700 rounded-lg px-4 py-3 leading-relaxed">
+                          <span class="text-gold font-bold mr-2">{idx + 1}.</span>{r}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                  {o.followup && (
+                    <div class="p-4 rounded-lg bg-gold/5 border border-gold/20">
+                      <div class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-gold mb-1">Si insiste</div>
+                      <p class="text-sm text-bone leading-relaxed">{o.followup}</p>
+                    </div>
+                  )}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- 07 — Cliente normal -->
+        <section id="cliente-normal">
+          <SectionLabel number="07" text="Preguntas del cliente común" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-3">Las que hace cualquier dueño de barbería o salón.</h2>
+          <p class="text-gray-300 mb-8 text-sm max-w-2xl leading-relaxed">
+            Respuestas conversacionales, cortas, sin tecnicismos. Léelas como si estuvieras hablando.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-3">
+            {normalClientFAQ.map((qa) => (
+              <details class="group bg-gray-800 border border-gray-700 rounded-xl transition-all hover:border-gold/20 open:border-gold/30">
+                <summary class="flex items-start justify-between cursor-pointer px-5 py-4 list-none [&::-webkit-details-marker]:hidden select-none gap-3">
+                  <span class="text-bone font-semibold text-sm leading-snug">{qa.q}</span>
+                  <svg class="w-4 h-4 text-gray-400 group-open:text-gold shrink-0 mt-0.5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </summary>
+                <p class="px-5 pb-4 pt-1 text-sm text-gray-300 leading-relaxed">
+                  {qa.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- 08 — Cliente técnico -->
+        <section id="cliente-tecnico">
+          <SectionLabel number="08" text="Preguntas del cliente técnico / quisquilloso" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-3">El que sabe de tech. Trátalo con la misma seriedad que pregunta.</h2>
+          <p class="text-gray-300 mb-8 text-sm max-w-2xl leading-relaxed">
+            Un cliente que pregunta por stack, seguridad y SLA es casi siempre un buen cliente.
+            No lo despaches — dale respuestas precisas. Si no sabes, di "déjame confirmarte" y vuelve.
+          </p>
+
+          <div class="space-y-3">
+            {technicalFAQ.map((qa, i) => (
+              <details class="group bg-gray-800 border border-gray-700 rounded-xl transition-all hover:border-gold/20 open:border-gold/30 open:border-l-4 open:border-l-gold">
+                <summary class="flex items-start justify-between cursor-pointer px-5 py-4 list-none [&::-webkit-details-marker]:hidden select-none gap-3">
+                  <div class="flex items-start gap-3 flex-1 min-w-0">
+                    <span class="text-gold text-xs font-bold tracking-wider shrink-0 mt-0.5">T{String(i + 1).padStart(2, '0')}</span>
+                    <span class="text-bone font-semibold text-sm leading-snug">{qa.q}</span>
+                  </div>
+                  <svg class="w-4 h-4 text-gray-400 group-open:text-gold shrink-0 mt-0.5 transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </summary>
+                <div class="px-5 pb-4 pt-1">
+                  <p class="text-sm text-gray-200 leading-relaxed bg-carbon-deep/40 border border-gray-700 rounded-lg px-4 py-3 font-mono-hint">
+                    {qa.a}
+                  </p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <!-- 09 — Planes -->
+        <section id="planes">
+          <SectionLabel number="09" text="Qué plan recomendar" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">El Profesional cierra el 80% de las ventas. Pero sabe cuándo NO recomendarlo.</h2>
+
+          <div class="grid md:grid-cols-3 gap-5">
+            {planGuide.map((p) => (
+              <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 flex flex-col">
+                <h3 class="text-base font-bold text-gold uppercase tracking-wider mb-4">{p.plan}</h3>
+
+                <div class="mb-5 flex-1">
+                  <div class="text-[0.65rem] font-bold tracking-[0.2em] uppercase text-gray-400 mb-2">Cuándo ofrecerlo</div>
+                  <ul class="space-y-2">
+                    {p.when.map((w) => (
+                      <li class="text-sm text-gray-200 leading-relaxed flex gap-2">
+                        <span class="text-gold mt-1 shrink-0 text-xs">●</span>
+                        <span>{w}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="p-3 rounded-lg bg-gold/5 border border-gold/20">
+                  <div class="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-gold mb-1">Upsell trigger</div>
+                  <p class="text-xs text-bone leading-relaxed">{p.upsellTrigger}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 10 — Cierre -->
+        <section id="cierre">
+          <SectionLabel number="10" text="Técnicas de cierre" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">Seis formas de cerrar. Elige la que coincida con el momento.</h2>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            {closeTechniques.map((c, i) => (
+              <div class="bg-gray-800 border border-gray-700 rounded-xl p-5 hover:border-gold/20 transition-colors">
+                <div class="flex items-start gap-3 mb-3">
+                  <span class="text-gold text-sm font-bold shrink-0">#{String(i + 1).padStart(2, '0')}</span>
+                  <div class="flex-1">
+                    <h3 class="text-base font-bold text-bone">{c.name}</h3>
+                    <p class="text-xs text-gold mt-1">{c.when}</p>
+                  </div>
+                </div>
+                <p class="text-sm text-bone bg-carbon-deep/50 border border-gray-700 rounded-lg px-4 py-3 leading-relaxed italic">
+                  "{c.script.replace(/^"|"$/g, '')}"
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- 11 — Do's & Don'ts -->
+        <section id="reglas">
+          <SectionLabel number="11" text="Do's & Don'ts" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-6">Hábitos de los que cierran. Errores de los que no.</h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-gradient-to-br from-gold/8 to-transparent border border-gold/30 rounded-xl p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-5 h-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <h3 class="text-base font-bold text-gold uppercase tracking-wider">Do — haz esto</h3>
+              </div>
+              <ul class="space-y-2.5">
+                {dos.map((r) => (
+                  <li class="text-sm text-gray-200 leading-relaxed flex gap-2.5">
+                    <span class="text-gold mt-1 shrink-0">✓</span>
+                    <span>{r.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-gray-800 border border-error/30 rounded-xl p-6">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-5 h-5 text-error" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                <h3 class="text-base font-bold text-error uppercase tracking-wider">Don't — evita esto</h3>
+              </div>
+              <ul class="space-y-2.5">
+                {donts.map((r) => (
+                  <li class="text-sm text-gray-300 leading-relaxed flex gap-2.5">
+                    <span class="text-error/80 mt-1 shrink-0">✗</span>
+                    <span>{r.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 12 — Cheat sheet -->
+        <section id="cheat">
+          <SectionLabel number="12" text="Cheat sheet" />
+          <h2 class="text-2xl lg:text-3xl font-extrabold mb-3">Todo lo crítico en una sola vista.</h2>
+          <p class="text-gray-300 mb-6 text-sm max-w-2xl leading-relaxed">
+            Imprime esto o guárdalo como captura de pantalla. Tenlo a mano cuando estés en llamada.
+          </p>
+
+          <div class="bg-gradient-to-br from-gold/10 via-gray-800 to-gray-800 border-2 border-gold/30 rounded-2xl p-6 lg:p-8 print-sheet">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-gold/20">
+              <div>
+                <div class="text-[0.65rem] font-bold tracking-[0.3em] uppercase text-gold mb-1">Zafirox · Cheat Sheet</div>
+                <div class="text-xl font-black text-bone">Ventas — Referencia rápida</div>
+              </div>
+              <button
+                id="print-btn"
+                class="hidden lg:inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/30 rounded-lg text-gold text-xs font-bold tracking-wider uppercase hover:bg-gold hover:text-carbon transition-all"
+              >
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 6 2 18 2 18 9"/>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                  <rect x="6" y="14" width="12" height="8"/>
+                </svg>
+                Imprimir
+              </button>
+            </div>
+
+            <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+              {cheatSheetFacts.map((f) => (
+                <div class="border-b border-gray-700 pb-3">
+                  <dt class="text-[0.65rem] font-bold tracking-[0.25em] uppercase text-gold/80 mb-1">{f.label}</dt>
+                  <dd class="text-sm text-bone leading-snug break-words">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+
+            <div class="mt-6 pt-6 border-t border-gold/20 grid md:grid-cols-3 gap-4 text-center">
+              <div>
+                <div class="text-2xl font-black text-gold">3</div>
+                <div class="text-[0.65rem] tracking-wider uppercase text-gray-400">días gratis</div>
+              </div>
+              <div>
+                <div class="text-2xl font-black text-gold">0%</div>
+                <div class="text-[0.65rem] tracking-wider uppercase text-gray-400">comisión por cita</div>
+              </div>
+              <div>
+                <div class="text-2xl font-black text-gold">&lt; 1h</div>
+                <div class="text-[0.65rem] tracking-wider uppercase text-gray-400">respuesta soporte</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a
+              href="/"
+              class="inline-flex items-center gap-2 text-gold hover:text-bone transition-colors text-sm"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"/>
+                <polyline points="12 19 5 12 12 5"/>
+              </svg>
+              Volver a la landing
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* Hint visual para respuestas técnicas: monoespaciado sutil */
+  .font-mono-hint {
+    font-family: 'Montserrat', system-ui, sans-serif;
+    font-feature-settings: 'tnum';
+  }
+
+  /* Scroll-padding para que los anclas no queden debajo del navbar */
+  html {
+    scroll-padding-top: 90px;
+  }
+
+  /* TOC activo */
+  .toc-link.active {
+    color: var(--color-gold);
+    border-left-color: var(--color-gold);
+    font-weight: 600;
+  }
+
+  /* Print */
+  @media print {
+    nav,
+    aside,
+    footer,
+    #navbar,
+    #sticky-cta,
+    .no-print {
+      display: none !important;
+    }
+    body {
+      background: white !important;
+      color: black !important;
+    }
+    .print-sheet {
+      background: white !important;
+      border-color: #111 !important;
+      color: #111 !important;
+      page-break-inside: avoid;
+    }
+    .print-sheet * {
+      color: #111 !important;
+    }
+  }
+</style>
+
+<script>
+  // TOC activo según scroll
+  const sections = document.querySelectorAll('section[id]');
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
+
+  if (sections.length && tocLinks.length) {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            tocLinks.forEach((a) => {
+              if (a.getAttribute('href') === `#${id}`) {
+                a.classList.add('active');
+              } else {
+                a.classList.remove('active');
+              }
+            });
+          }
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => obs.observe(s));
+  }
+
+  // Print button
+  const printBtn = document.getElementById('print-btn');
+  if (printBtn) {
+    printBtn.addEventListener('click', () => window.print());
+  }
+</script>

@@ -9,9 +9,14 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  /**
+   * Páginas internas (ej. /guia-de-venta) pueden ocultar el CTA sticky y el
+   * botón flotante de WhatsApp que solo tienen sentido en la landing de venta.
+   */
+  minimal?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, minimal = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -25,8 +30,8 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
-    <StickyCTA />
-    <WhatsAppButton />
+    {!minimal && <StickyCTA />}
+    {!minimal && <WhatsAppButton />}
 
     <!-- Scroll animations + counter utility -->
     <script>

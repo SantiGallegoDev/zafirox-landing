@@ -1,11 +1,13 @@
 ---
 const BASE = import.meta.env.BASE_URL;
+// Rutas absolutas (/#...) para que funcionen tanto desde la landing como desde
+// páginas internas (ej. /guia-de-venta).
 const links = [
-  { label: 'Para quién', href: '#para-quien' },
-  { label: 'Funcionalidades', href: '#funcionalidades' },
-  { label: 'Cómo Funciona', href: '#como-funciona' },
-  { label: 'Precios', href: '#precios' },
-  { label: 'Preguntas', href: '#faq' },
+  { label: 'Para quién', href: '/#para-quien' },
+  { label: 'Funcionalidades', href: '/#funcionalidades' },
+  { label: 'Cómo Funciona', href: '/#como-funciona' },
+  { label: 'Precios', href: '/#precios' },
+  { label: 'Preguntas', href: '/#faq' },
 ];
 ---
 
@@ -36,7 +38,7 @@ const links = [
       </li>
       <li>
         <a
-          href="#contacto"
+          href="/#contacto"
           class="ml-2 px-5 py-2.5 bg-gold text-carbon text-[0.75rem] font-bold tracking-wider uppercase rounded-lg hover:bg-[#d4b76a] hover:shadow-[0_4px_20px_rgba(198,168,94,0.3)] transition-all duration-300"
         >
           Probar gratis
@@ -70,7 +72,7 @@ const links = [
         Iniciar sesión
       </a>
       <a
-        href="#contacto"
+        href="/#contacto"
         class="mobile-link px-5 py-3 bg-gold text-carbon text-sm font-bold tracking-wider uppercase rounded-lg text-center hover:bg-[#d4b76a] transition-all"
       >
         Probar gratis
